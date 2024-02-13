@@ -13,14 +13,14 @@ keywords:
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-An Issuer is any subject that issues Verifiable Credentials. You can think of a credential as a statement: something an Issuer says about another subject. For example, when a university (Issuer) claims that a student (subject) has a degree, this is a credential.
+An Issuer is any identity holder that issues Verifiable Credentials (to itself or to other identity holders). You can think of a credential as a statement or an attestation: something an Issuer says about another subject. For example, when a university (Issuer) claims that a student (subject) has a degree (credential).
 
-An issuer might be:
+Other examples of issuers are:
 
-- A DAO that issues “membership claims" to its members.
-- A Government institution that issues Identity documents to its citizens.
-- A Face detection Machine Learning application that issues "proof of personhood" claims.
-- An employer that endorses its employees.
+- A DAO that issues “membership credentials" to its members.
+- A Government that issues National Identity documents to its citizens.
+- A Face detection Machine Learning application that issues "prooved human" credentials.
+- An employer that certifies that its employees work for the company.
 
 :::info
 
@@ -51,7 +51,7 @@ To operate, an Issuer must run an Issuer Node, which is a self-hosted Node that 
 </div>
 <br></br>
 
-There are basically two ways the Issuer Node can be implemented:
+Once deployed, there are two ways to work with the issuer node:
 
 - Issuer Node Core API
 - Issuer Node UI
@@ -62,7 +62,9 @@ There are basically two ways the Issuer Node can be implemented:
 
 ### Issuer Node Core API
 
-The [Issuer Node Core API](issuer-core.md) is ideal for users who need multiple identities and for **integrator profiles, who want to create solutions based on Polygon ID functionalities and might be interested in having access to low-level information** such as Merkle Trees.
+The [Issuer Node Core API](issuer-core.md) is the recommended way of using the issuer node, since the creation of credentials will most likely be part of a bigger application flow (e.g. face scanning and document verification). Once the issuer has completed the process to verify the information that give the user the right to the credential, the issuer node API can be invoked to produce the credential offering (that can be fetched by the user through the Polygon ID compatible Wallets).
+
+The Issuer Node Core API allows to operate through multiple identifiers (DID's). This means that the organization operating the Issuer Node can use different DID to issue the credentials.
 
 <div align="center">
 <img src= {useBaseUrl("img/3001.png")} align="center" />
@@ -70,7 +72,7 @@ The [Issuer Node Core API](issuer-core.md) is ideal for users who need multiple 
 
 ### Issuer Node UI
 
-The [Issuer Node UI](issuer-node-ui.md) provides the full experience of having an Issuer Node with all its capabilities. Although it offers only a single identity, it also presents a few extra features, such as establishing connections and importing schemas. It comes in an API format but there is also the possibility of generating a full-fledged user interface.
+The [Issuer Node UI](issuer-node-ui.md) provides the full experience of having an Issuer Node with all its capabilities. Although it offers only a single identity, it also presents a few extra features, such as establishing connections and importing schemas. The UI is recommended for the initial setup and testing. It's perfect for proof of concept when some steps have to be done manually. It can also help organizations that issue credentials at the end of a manual verification process.  
 
 Issuer Node User Interface with a more visual experience:
 
@@ -78,7 +80,12 @@ Issuer Node User Interface with a more visual experience:
 <img src= {useBaseUrl("img/8088.png")} align="center" />
 </div>
 
-Issuer Node API UI with Managing Schemas, Credentials and other functionalities:
+:::info
+
+[<ins>The Demo Issuer</ins>](https://issuer-ui.polygonid.me/) allows you to test the Issuer Node UI without installations. The information in that server is deleted every 48 hours and no private data should be stored in the credentials.
+
+:::
+
 
 <div align="center">
 <img src= {useBaseUrl("img/3002.png")} align="center" />
